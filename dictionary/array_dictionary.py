@@ -33,7 +33,7 @@ class ArrayDictionary(BaseDictionary):
         @return: frequency > 0 if found and 0 if NOT found
         """
         # TO BE IMPLEMENTED
-
+        
         return 0
 
     def add_word_frequency(self, word_frequency: WordFrequency) -> bool:
