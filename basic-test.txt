@@ -1,1 +1,1 @@
-python3 dictionary_test_script.py -v /Users/maxapple/Documents/GitHub/ALGOAssignment array sampleData.txt test1.in
+python3 dictionary_test_script.py /Users/maxapple/Documents/GitHub/ALGOAssignment array sampleData.txt test1.in
