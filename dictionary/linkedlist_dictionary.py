@@ -22,9 +22,9 @@ class ListNode:
 class LinkedListDictionary(BaseDictionary):
 
     def __init__(self):
-        # TO BE IMPLEMENTED
-        pass
-
+        
+        self.head = None
+        self.tail = None
 
     def build_dictionary(self, words_frequencies: [WordFrequency]):
         """
@@ -33,6 +33,8 @@ class LinkedListDictionary(BaseDictionary):
         """
         # TO BE IMPLEMENTED
 
+        for word in words_frequencies:
+            self.add_word_frequency(word)
 
     def search(self, word: str) -> int:
         """
@@ -42,6 +44,11 @@ class LinkedListDictionary(BaseDictionary):
         """
 
         # TO BE IMPLEMENTED
+        current = self.head
+        while current is not None:
+            if current.word_frequency.word == word:
+                return current.word_frequency.frequency
+            current = current.next
         return 0
 
     def add_word_frequency(self, word_frequency: WordFrequency) -> bool:
@@ -52,7 +59,20 @@ class LinkedListDictionary(BaseDictionary):
         """
 
         # TO BE IMPLEMENTED
-        return False
+        if self.search(word_frequency.word) > 0:
+            return False
+        
+        new_node = ListNode(word_frequency)
+
+        if self.head is None:
+            self.head = new_node
+            self.tail = new_node
+            return
+        else:
+            self.tail.next = new_node
+            self.tail = new_node
+
+        return True
 
     def delete_word(self, word: str) -> bool:
         """
@@ -62,6 +82,17 @@ class LinkedListDictionary(BaseDictionary):
         """
 
         # TO BE IMPLEMENTED
+        prev = None
+        current = self.head
+        while current:
+            if current.word_frequency.word == word:
+                if prev:
+                    prev.next = current.next
+                else:
+                    self.head = current.next
+                return True
+            prev = current
+            current = current.next
         return False
 
 
@@ -73,7 +104,23 @@ class LinkedListDictionary(BaseDictionary):
         """
 
         # TO BE IMPLEMENTED
-        return []
+        # Initialize an empty list to hold words that match the prefix
+        matches = []
 
+        # Start from the head of the linked list
+        current = self.head
 
+        # Loop through the linked list
+        while current is not None:
+            if current.word_frequency.word.startswith(word):
+                # If the word in the current node starts with the prefix, add it to matches
+                matches.append(current.word_frequency)
 
+            # Move to the next node
+            current = current.next
+
+        # Sort the matching words by frequency, in descending order
+        matches.sort(key=lambda x: x.frequency, reverse=True)
+
+        # Take the top 3 most frequent words
+        return matches[:3]
