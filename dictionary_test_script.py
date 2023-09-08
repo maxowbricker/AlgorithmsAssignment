@@ -142,7 +142,8 @@ def main():
             (sStdout, sStderr) = proc.communicate()
 
             if bVerbose and len(sStderr) > 0:
-                print("\nWarnings and error messages from running python program:\n" + sStderr)
+                print("\nWarnings and error messages from running python program:\n" + sStderr.decode("utf-8"))
+
 
             # compare expected with output
             bPassed, bFailedOutput = evaluate(sExpectedFile, sOutputFile)

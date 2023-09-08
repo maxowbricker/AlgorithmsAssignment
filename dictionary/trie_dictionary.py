@@ -31,11 +31,12 @@ class TrieDictionary(BaseDictionary):
 
     def build_dictionary(self, words_frequencies: [WordFrequency]):
         """
-        Construct the data structure to store nodes
+        construct the data structure to store nodes
         @param words_frequencies: list of (word, frequency) to be stored
         """
-        for word, frequency in words_frequencies:
-            self.add_word_frequency(WordFrequency(word, frequency))
+        for word in words_frequencies:
+            self.add_word_frequency(word)
+
 
     def search(self, word: str) -> int:
         """
@@ -111,4 +112,4 @@ class TrieDictionary(BaseDictionary):
             completions.append(WordFrequency(prefix, node.frequency))
 
         for letter, child_node in node.children.items():
-            self._find_completions(child_node, prefix + letter, completions
+            self._find_completions(child_node, prefix + letter, completions)
