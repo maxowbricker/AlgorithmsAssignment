@@ -1,6 +1,6 @@
 from dictionary.base_dictionary import BaseDictionary
 from dictionary.word_frequency import WordFrequency
-
+import time
 
 class ListNode:
     '''
@@ -31,7 +31,6 @@ class LinkedListDictionary(BaseDictionary):
         construct the data structure to store nodes
         @param words_frequencies: list of (word, frequency) to be stored
         """
-        # TO BE IMPLEMENTED
 
         for word in words_frequencies:
             self.add_word_frequency(word)
@@ -43,7 +42,6 @@ class LinkedListDictionary(BaseDictionary):
         @return: frequency > 0 if found and 0 if NOT found
         """
 
-        # TO BE IMPLEMENTED
         current = self.head
         while current is not None:
             if current.word_frequency.word == word:
@@ -58,7 +56,6 @@ class LinkedListDictionary(BaseDictionary):
         :return: True whether succeeded, False when word is already in the dictionary
         """
 
-        # TO BE IMPLEMENTED
         if self.search(word_frequency.word) > 0:
             return False
         
@@ -81,7 +78,6 @@ class LinkedListDictionary(BaseDictionary):
         @return: whether succeeded, e.g. return False when point not found
         """
 
-        # TO BE IMPLEMENTED
         prev = None
         current = self.head
         while current:
@@ -103,7 +99,6 @@ class LinkedListDictionary(BaseDictionary):
         @return: a list (could be empty) of (at most) 3 most-frequent words with prefix 'word'
         """
 
-        # TO BE IMPLEMENTED
         # Initialize an empty list to hold words that match the prefix
         matches = []
 
