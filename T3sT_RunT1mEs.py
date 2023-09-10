@@ -22,7 +22,8 @@ if __name__ == "__main__":
     total_timeW = 0
     total_timeDB = 0
     total_timeDW = 0
-
+    total_timeAB = 0 
+    
     # Average run time for building a linked list dictionary
     for _ in range(num_trials):
         start_time = time.time()
@@ -77,3 +78,26 @@ if __name__ == "__main__":
 
     avg_timeDW = total_timeDW / num_trials
     print(f"Average time taken over {num_trials} trials =  {avg_timeDW:.5f} sec")
+
+    # Average best case run time for autocompleting a word in the linked list dictionary
+    for _ in range(num_trials):
+        start_time = time.time()
+        suggestions = linked_list_dict.autocomplete('rec')  # Use a prefix expected to be common for best case
+        end_time = time.time()
+
+        total_timeAB += (end_time - start_time)
+
+    avg_timeAB = total_timeAB / num_trials
+    print(f"Average best-case time for autocomplete over {num_trials} trials = {avg_timeAB:.5f} sec")
+
+    # Average worst case run time for autocompleting a word in the linked list dictionary
+    total_timeAW = 0  # Total time for autocomplete worst case
+    for _ in range(num_trials):
+        start_time = time.time()
+        suggestions = linked_list_dict.autocomplete('eregjergjerigjio')  # Use a prefix not expected to be in the data for worst case
+        end_time = time.time()
+
+        total_timeAW += (end_time - start_time)
+
+    avg_timeAW = total_timeAW / num_trials
+    print(f"Average worst-case time for autocomplete over {num_trials} trials = {avg_timeAW:.5f} sec")
