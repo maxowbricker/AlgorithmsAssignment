@@ -15,7 +15,7 @@ def create_linkedlist_from_txt(filename):
 
 if __name__ == "__main__":
 
-    filename = "sampleData200k.txt"
+    filename = "sampleData.txt"
 
     start_time = time.time()
     linked_list_dict = create_linkedlist_from_txt(filename)
