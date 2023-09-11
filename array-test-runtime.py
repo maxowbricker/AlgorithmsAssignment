@@ -59,16 +59,13 @@ def run_benchmarks_for_file(filename):
 
     results.append(Result('searching', 'best case', benchmark(search_operation, num_trials, array_dict, middle_word)))
     results.append(Result('searching', 'worst case', benchmark(search_operation, num_trials, array_dict, 'badWord')))
+    results.append(Result('adding', 'best case', benchmark(add_word_frequency_best_case, num_trials, array_dict, 'newWord', 10)))
+    results.append(Result('adding', 'worst case', benchmark(add_word_frequency_worst_case, num_trials, array_dict, 'zzzWord')))
     results.append(Result('deleting', 'best case', benchmark(delete_operation, num_trials, array_dict, middle_word)))
     results.append(Result('deleting', 'worst case', benchmark(delete_operation, num_trials, array_dict, 'badWord')))
     results.append(Result('autocompleting', 'best case', benchmark(autocomplete_operation, num_trials, array_dict, 'alahkazam')))
     results.append(Result('autocompleting', 'worst case', benchmark(autocomplete_operation, num_trials, array_dict, 'a')))
 
-    # Adding a word frequency in best case (already sorted)
-    results.append(Result('adding', 'best case', benchmark(add_word_frequency_best_case, num_trials, array_dict, 'newWord', 10)))
-
-    # Adding a word frequency in worst case (not sorted)
-    results.append(Result('adding', 'worst case', benchmark(add_word_frequency_worst_case, num_trials, array_dict, 'zzzWord')))
 
     print(f"Results for {filename}:")
     for result in results:
