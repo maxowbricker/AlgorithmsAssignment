@@ -33,7 +33,6 @@ def run_benchmarks_for_file(filename):
     results.append(Result('building', 'dictionary', benchmark(create_linkedlist_from_txt, num_trials, filename)))
 
     lld_first = linked_list_dict.head.word_frequency.word
-    lld_first_auto = lld_first[:4]
 
     results.append(Result('searching', 'best case', benchmark(linked_list_dict.search, num_trials, lld_first)))
     results.append(Result('searching', 'worst case', benchmark(linked_list_dict.search, num_trials, 'badWord')))
