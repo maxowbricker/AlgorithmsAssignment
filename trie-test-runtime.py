@@ -14,7 +14,7 @@ def create_triedict_from_txt(filename):
     return trie_dict
 
 if __name__ == "__main__":
-    filename = "sampleData.txt"
+    filename = "sampleData200k.txt"
     num_trials = 10
     total_time_build = 0
     total_time_search_best = 0
