@@ -33,11 +33,11 @@ def run_benchmarks_for_file(filename):
     results.append(Result('building', 'dictionary', benchmark(create_triedict_from_txt, num_trials, filename)))
     
     results.append(Result('searching', 'best case', benchmark(trie_dict.search, num_trials, 'reclassify')))
-    results.append(Result('searching', 'worst case', benchmark(trie_dict.search, num_trials, 'eregjergjerigjio')))
+    results.append(Result('searching', 'worst case', benchmark(trie_dict.search, num_trials, 'badWord')))
     results.append(Result('deleting', 'best case', benchmark(trie_dict.delete_word, num_trials, 'reclassify')))
-    results.append(Result('deleting', 'worst case', benchmark(trie_dict.delete_word, num_trials, 'eregjergjerigjio')))
-    results.append(Result('autocompleting', 'best case', benchmark(trie_dict.autocomplete, num_trials, 're')))
-    results.append(Result('autocompleting', 'worst case', benchmark(trie_dict.autocomplete, num_trials, 'eregjergjerigjio')))
+    results.append(Result('deleting', 'worst case', benchmark(trie_dict.delete_word, num_trials, 'badWord')))
+    results.append(Result('autocompleting', 'best case', benchmark(trie_dict.autocomplete, num_trials, 'alahkazam')))
+    results.append(Result('autocompleting', 'worst case', benchmark(trie_dict.autocomplete, num_trials, 'a')))
 
     print(f"Results for {filename}:")
     for result in results:

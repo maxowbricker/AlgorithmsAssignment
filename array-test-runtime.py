@@ -36,12 +36,12 @@ def run_benchmarks_for_file(filename):
     results.append(Result('searching', 'worst case', benchmark(array_dict.search, num_trials, 'badWord')))
     results.append(Result('deleting', 'best case', benchmark(array_dict.delete_word, num_trials, 'btvinfo')))
     results.append(Result('deleting', 'worst case', benchmark(array_dict.delete_word, num_trials, 'badWord')))
-    results.append(Result('autocompleting', 'best case', benchmark(array_dict.autocomplete, num_trials, 'bt')))
-    results.append(Result('autocompleting', 'worst case', benchmark(array_dict.autocomplete, num_trials, 'badW')))
+    results.append(Result('autocompleting', 'best case', benchmark(array_dict.autocomplete, num_trials, 'alahkazam')))
+    results.append(Result('autocompleting', 'worst case', benchmark(array_dict.autocomplete, num_trials, 'a')))
 
     print(f"Results for {filename}:")
     for result in results:
-        print(f"Average time taken over {num_trials} trials for {result.action} a {result.scenario} = {result.time:.5f} sec")
+        print(f"Average time taken over {num_trials} trials for {result.action} a {result.scenario} = {result.time} sec")
     print("\n")
 
 if __name__ == "__main__":
