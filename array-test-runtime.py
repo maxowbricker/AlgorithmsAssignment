@@ -30,7 +30,7 @@ if __name__ == "__main__":
         total_time_build += (end_time - start_time)
 
     avg_time_build = total_time_build / num_trials
-    print(f"Average time taken for building over {num_trials} trials =  {avg_time_build:.5f} sec")
+    print(f"Average time taken for building over {num_trials} trials =  {avg_time_build} sec")
 
     # Average best case run time for searching a word in the array dictionary
     for _ in range(num_trials):
@@ -40,7 +40,7 @@ if __name__ == "__main__":
         total_time_search_best += (end_time - start_time)
 
     avg_time_search_best = total_time_search_best / num_trials
-    print(f"Average time taken for best case search over {num_trials} trials =  {avg_time_search_best:.5f} sec")
+    print(f"Average time taken for best case search over {num_trials} trials =  {avg_time_search_best} sec")
 
     # Average worst case run time for searching a word in the array dictionary
     for _ in range(num_trials):
@@ -50,7 +50,7 @@ if __name__ == "__main__":
         total_time_search_worst += (end_time - start_time)
 
     avg_time_search_worst = total_time_search_worst / num_trials
-    print(f"Average time taken for worst case search over {num_trials} trials =  {avg_time_search_worst:.5f} sec")
+    print(f"Average time taken for worst case search over {num_trials} trials =  {avg_time_search_worst} sec")
 
     # Average best case run time for deleting a word in the array dictionary
     for _ in range(num_trials):
@@ -60,7 +60,7 @@ if __name__ == "__main__":
         total_time_delete_best += (end_time - start_time)
 
     avg_time_delete_best = total_time_delete_best / num_trials
-    print(f"Average time taken for best case delete over {num_trials} trials =  {avg_time_delete_best:.5f} sec")
+    print(f"Average time taken for best case delete over {num_trials} trials =  {avg_time_delete_best} sec")
 
     # Average worst case run time for deleting a word in the array dictionary
     for _ in range(num_trials):
@@ -70,4 +70,4 @@ if __name__ == "__main__":
         total_time_delete_worst += (end_time - start_time)
 
     avg_time_delete_worst = total_time_delete_worst / num_trials
-    print(f"Average time taken for worst case delete over {num_trials} trials =  {avg_time_delete_worst:.5f} sec")
+    print(f"Average time taken for worst case delete over {num_trials} trials =  {avg_time_delete_worst} sec")
