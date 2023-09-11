@@ -36,7 +36,6 @@ class ArrayDictionary(BaseDictionary):
         @param word: the word to be searched
         @return: frequency > 0 if found and 0 if NOT found
         """
-        # Use binary search to find the word in the sorted list
         index = bisect.bisect_left(self.dictionary, WordFrequency(word, 0))
         
         # Check if the word is found and return its frequency if found

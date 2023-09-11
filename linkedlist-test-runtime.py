@@ -41,6 +41,18 @@ def run_benchmarks_for_file(filename):
     results.append(Result('autocompleting', 'best case', benchmark(linked_list_dict.autocomplete, num_trials, 'alahkazam')))
     results.append(Result('autocompleting', 'worst case', benchmark(linked_list_dict.autocomplete, num_trials, 'a')))
 
+    # Add testing and printing for the add_word_frequency operation
+    wf_to_add = WordFrequency('newWord', 42)  # Change 'newWord' and 42 to the word and frequency you want to add
+    add_word_time = benchmark(linked_list_dict.add_word_frequency, num_trials, wf_to_add)
+    results.append(Result('adding', 'word', add_word_time))
+    
+    print(f"Results for {filename}:")
+    for result in results:
+        print(f"Average time taken over {num_trials} trials for {result.action} a {result.scenario} = {result.time} sec")
+    print("\n")
+
+
+    
     print(f"Results for {filename}:")
     for result in results:
         print(f"Average time taken over {num_trials} trials for {result.action} a {result.scenario} = {result.time} sec")
