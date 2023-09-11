@@ -16,7 +16,7 @@ def create_linkedlist_from_txt(filename):
 
 def benchmark(func, num_trials, *args):
     total_time = 0
-    for _ in range(num_trials):
+    for i in range(num_trials):
         start_time = time.time()
         func(*args)
         end_time = time.time()
