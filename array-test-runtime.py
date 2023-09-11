@@ -1,6 +1,7 @@
 from dictionary.word_frequency import WordFrequency
 from dictionary.array_dictionary import ArrayDictionary
 import time
+from collections import namedtuple
 
 def create_arraydict_from_txt(filename):
     arr_dict = ArrayDictionary()
@@ -13,61 +14,36 @@ def create_arraydict_from_txt(filename):
 
     return arr_dict
 
+def benchmark(func, num_trials, *args):
+    total_time = 0
+    for _ in range(num_trials):
+        start_time = time.time()
+        func(*args)
+        end_time = time.time()
+        total_time += (end_time - start_time)
+    return total_time / num_trials
+
+def run_benchmarks_for_file(filename):
+    num_trials = 10
+    Result = namedtuple('Result', ['action', 'scenario', 'time'])
+
+    array_dict = create_arraydict_from_txt(filename)
+    results = []
+
+    results.append(Result('building', 'dictionary', benchmark(create_arraydict_from_txt, num_trials, filename)))
+
+    results.append(Result('searching', 'best case', benchmark(array_dict.search, num_trials, 'btvinfo')))
+    results.append(Result('searching', 'worst case', benchmark(array_dict.search, num_trials, 'badWord')))
+    results.append(Result('deleting', 'best case', benchmark(array_dict.delete_word, num_trials, 'btvinfo')))
+    results.append(Result('deleting', 'worst case', benchmark(array_dict.delete_word, num_trials, 'badWord')))
+    results.append(Result('autocompleting', 'best case', benchmark(array_dict.autocomplete, num_trials, 'bt')))
+    results.append(Result('autocompleting', 'worst case', benchmark(array_dict.autocomplete, num_trials, 'badW')))
+
+    print(f"Results for {filename}:")
+    for result in results:
+        print(f"Average time taken over {num_trials} trials for {result.action} a {result.scenario} = {result.time:.5f} sec")
+    print("\n")
+
 if __name__ == "__main__":
     filename = "sampleData200k.txt"
-    num_trials = 10
-    total_time_build = 0
-    total_time_search_best = 0
-    total_time_search_worst = 0
-    total_time_delete_best = 0
-    total_time_delete_worst = 0
-
-    # Average run time for building an array dictionary
-    for _ in range(num_trials):
-        start_time = time.time()
-        array_dict = create_arraydict_from_txt(filename)
-        end_time = time.time()
-        total_time_build += (end_time - start_time)
-
-    avg_time_build = total_time_build / num_trials
-    print(f"Average time taken for building over {num_trials} trials =  {avg_time_build} sec")
-
-    # Average best case run time for searching a word in the array dictionary
-    for _ in range(num_trials):
-        start_time = time.time()
-        freq = array_dict.search('btvinfo')
-        end_time = time.time()
-        total_time_search_best += (end_time - start_time)
-
-    avg_time_search_best = total_time_search_best / num_trials
-    print(f"Average time taken for best case search over {num_trials} trials =  {avg_time_search_best} sec")
-
-    # Average worst case run time for searching a word in the array dictionary
-    for _ in range(num_trials):
-        start_time = time.time()
-        freq = array_dict.search('badWord')
-        end_time = time.time()
-        total_time_search_worst += (end_time - start_time)
-
-    avg_time_search_worst = total_time_search_worst / num_trials
-    print(f"Average time taken for worst case search over {num_trials} trials =  {avg_time_search_worst} sec")
-
-    # Average best case run time for deleting a word in the array dictionary
-    for _ in range(num_trials):
-        start_time = time.time()
-        freq = array_dict.delete_word('btvinfo')
-        end_time = time.time()
-        total_time_delete_best += (end_time - start_time)
-
-    avg_time_delete_best = total_time_delete_best / num_trials
-    print(f"Average time taken for best case delete over {num_trials} trials =  {avg_time_delete_best} sec")
-
-    # Average worst case run time for deleting a word in the array dictionary
-    for _ in range(num_trials):
-        start_time = time.time()
-        freq = array_dict.delete_word('badWord')
-        end_time = time.time()
-        total_time_delete_worst += (end_time - start_time)
-
-    avg_time_delete_worst = total_time_delete_worst / num_trials
-    print(f"Average time taken for worst case delete over {num_trials} trials =  {avg_time_delete_worst} sec")
+    run_benchmarks_for_file(filename)
