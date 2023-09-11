@@ -14,7 +14,7 @@ def create_arraydict_from_txt(filename):
     return arr_dict
 
 if __name__ == "__main__":
-    filename = "sampleData.txt"
+    filename = "sampleData200k.txt"
     num_trials = 10
     total_time_build = 0
     total_time_search_best = 0
@@ -35,7 +35,7 @@ if __name__ == "__main__":
     # Average best case run time for searching a word in the array dictionary
     for _ in range(num_trials):
         start_time = time.time()
-        freq = array_dict.search('reclassify')
+        freq = array_dict.search('btvinfo')
         end_time = time.time()
         total_time_search_best += (end_time - start_time)
 
@@ -45,7 +45,7 @@ if __name__ == "__main__":
     # Average worst case run time for searching a word in the array dictionary
     for _ in range(num_trials):
         start_time = time.time()
-        freq = array_dict.search('eregjergjerigjio')
+        freq = array_dict.search('badWord')
         end_time = time.time()
         total_time_search_worst += (end_time - start_time)
 
@@ -55,7 +55,7 @@ if __name__ == "__main__":
     # Average best case run time for deleting a word in the array dictionary
     for _ in range(num_trials):
         start_time = time.time()
-        freq = array_dict.delete_word('reclassify')
+        freq = array_dict.delete_word('btvinfo')
         end_time = time.time()
         total_time_delete_best += (end_time - start_time)
 
@@ -65,7 +65,7 @@ if __name__ == "__main__":
     # Average worst case run time for deleting a word in the array dictionary
     for _ in range(num_trials):
         start_time = time.time()
-        freq = array_dict.delete_word('eregjergjerigjio')
+        freq = array_dict.delete_word('badWord')
         end_time = time.time()
         total_time_delete_worst += (end_time - start_time)
 
