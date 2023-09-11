@@ -7,8 +7,8 @@ with open('word_list.txt', 'r') as file:
 # Shuffle the list of common words to ensure randomness
 random.shuffle(common_words)
 
-# Generate a random number of lines between 3000 and 10000
-num_lines = random.randint(3000, 10000)
+# Generate a number of lines
+num_lines = 20000
 
 # Create and open the output file
 with open('generated-txt.txt', 'w') as file:
