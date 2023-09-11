@@ -16,17 +16,15 @@ def create_linkedlist_from_txt(filename):
 
 def benchmark(func, num_trials, *args):
     total_time = 0
-    for i in range(num_trials):
+    for _ in range(num_trials):
         start_time = time.time()
         func(*args)
         end_time = time.time()
         total_time += (end_time - start_time)
     return total_time / num_trials
 
-if __name__ == "__main__":
-    filename = "sampleData.txt"
+def run_benchmarks_for_file(filename):
     num_trials = 10
-
     Result = namedtuple('Result', ['action', 'scenario', 'time'])
 
     linked_list_dict = create_linkedlist_from_txt(filename)
@@ -38,11 +36,18 @@ if __name__ == "__main__":
     lld_first_auto = lld_first[:4]
 
     results.append(Result('searching', 'best case', benchmark(linked_list_dict.search, num_trials, lld_first)))
-    results.append(Result('searching', 'worst case', benchmark(linked_list_dict.search, num_trials, 'badWord')))
+    results.append(Result('searching', 'worst case', benchmark(linked_list_dict.search, num_trials, 'eregjergjerigjio')))
     results.append(Result('deleting', 'best case', benchmark(linked_list_dict.delete_word, num_trials, lld_first)))
-    results.append(Result('deleting', 'worst case', benchmark(linked_list_dict.delete_word, num_trials, 'badWord')))
+    results.append(Result('deleting', 'worst case', benchmark(linked_list_dict.delete_word, num_trials, 'eregjergjerigjio')))
     results.append(Result('autocompleting', 'best case', benchmark(linked_list_dict.autocomplete, num_trials, lld_first_auto)))
-    results.append(Result('autocompleting', 'worst case', benchmark(linked_list_dict.autocomplete, num_trials, 'badWord')))
+    results.append(Result('autocompleting', 'worst case', benchmark(linked_list_dict.autocomplete, num_trials, 'eregjergjerigjio')))
 
+    print(f"Results for {filename}:")
     for result in results:
-        print(f"Average time taken over {num_trials} trials for {result.action} {result.scenario} = {result.time:.5f} sec")
+        print(f"Average time taken over {num_trials} trials for {result.action} a {result.scenario} = {result.time} sec")
+    print("\n")
+
+if __name__ == "__main__":
+    filenames = ["sampleData.txt", "sampleDataToy.txt"]  # List of filenames to benchmark
+    for filename in filenames:
+        run_benchmarks_for_file(filename)
