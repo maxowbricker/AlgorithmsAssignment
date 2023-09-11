@@ -34,6 +34,8 @@ def run_benchmarks_for_file(filename):
     
     results.append(Result('searching', 'best case', benchmark(trie_dict.search, num_trials, 'a')))
     results.append(Result('searching', 'worst case', benchmark(trie_dict.search, num_trials, 'pneumonoultramicroscopicsilicovolcanoconiosis'))) 
+    results.append(Result('adding', 'best case', benchmark(trie_dict.add_word_frequency, num_trials, 'a')))
+    results.append(Result('adding', 'worst case', benchmark(trie_dict.add_word_frequency, num_trials, 'Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch')))
     results.append(Result('deleting', 'best case', benchmark(trie_dict.delete_word, num_trials, 'a')))
     results.append(Result('deleting', 'worst case', benchmark(trie_dict.delete_word, num_trials, 'pneumonoultramicroscopicsilicovolcanoconiosis')))
     results.append(Result('autocompleting', 'best case', benchmark(trie_dict.autocomplete, num_trials, 'alahkazam')))
