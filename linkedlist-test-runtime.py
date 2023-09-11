@@ -24,7 +24,7 @@ def benchmark(func, num_trials, *args):
     return total_time / num_trials
 
 def run_benchmarks_for_file(filename):
-    num_trials = 10
+    num_trials = 100
     Result = namedtuple('Result', ['action', 'scenario', 'time'])
 
     linked_list_dict = create_linkedlist_from_txt(filename)
@@ -47,6 +47,6 @@ def run_benchmarks_for_file(filename):
     print("\n")
 
 if __name__ == "__main__":
-    filenames = ["sampleData.txt", "sampleDataToy.txt"]  # List of filenames to benchmark
+    filenames = ["500-generated.txt", "2k-generated.txt", "10k-generated.txt", "20k-generated.txt", "50k-generated.txt", "100k-generated.txt"]  # List of filenames to benchmark
     for filename in filenames:
         run_benchmarks_for_file(filename)
