@@ -33,25 +33,15 @@ def run_benchmarks_for_file(filename):
     results.append(Result('building', 'dictionary', benchmark(create_linkedlist_from_txt, num_trials, filename)))
 
     lld_first = linked_list_dict.head.word_frequency.word
+    unique_word_for_adding = WordFrequency('veryUniqueWordNotInList', 3479832479)
 
     results.append(Result('searching', 'best case', benchmark(linked_list_dict.search, num_trials, lld_first)))
     results.append(Result('searching', 'worst case', benchmark(linked_list_dict.search, num_trials, 'badWord')))
+    results.append(Result('adding', 'worst case', benchmark(linked_list_dict.add_word_frequency, num_trials, unique_word_for_adding)))
     results.append(Result('deleting', 'best case', benchmark(linked_list_dict.delete_word, num_trials, lld_first)))
     results.append(Result('deleting', 'worst case', benchmark(linked_list_dict.delete_word, num_trials, 'badWord')))
     results.append(Result('autocompleting', 'best case', benchmark(linked_list_dict.autocomplete, num_trials, 'alahkazam')))
     results.append(Result('autocompleting', 'worst case', benchmark(linked_list_dict.autocomplete, num_trials, 'a')))
-
-    # Add testing and printing for the add_word_frequency operation
-    wf_to_add = WordFrequency('newWord', 42)  # Change 'newWord' and 42 to the word and frequency you want to add
-    add_word_time = benchmark(linked_list_dict.add_word_frequency, num_trials, wf_to_add)
-    results.append(Result('adding', 'word', add_word_time))
-    
-    print(f"Results for {filename}:")
-    for result in results:
-        print(f"Average time taken over {num_trials} trials for {result.action} a {result.scenario} = {result.time} sec")
-    print("\n")
-
-
     
     print(f"Results for {filename}:")
     for result in results:
@@ -59,6 +49,6 @@ def run_benchmarks_for_file(filename):
     print("\n")
 
 if __name__ == "__main__":
-    filenames = ["500-generated.txt", "2k-generated.txt", "10k-generated.txt", "20k-generated.txt", "50k-generated.txt", "100k-generated.txt"]  # List of filenames to benchmark
+    filenames = ["500-generated.txt", "2k-generated.txt", "10k-generated.txt", "20k-generated.txt", "sampleData200k.txt"]  # List of filenames to benchmark
     for filename in filenames:
         run_benchmarks_for_file(filename)
