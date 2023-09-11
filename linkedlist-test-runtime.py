@@ -38,11 +38,11 @@ if __name__ == "__main__":
     lld_first_auto = lld_first[:4]
 
     results.append(Result('searching', 'best case', benchmark(linked_list_dict.search, num_trials, lld_first)))
-    results.append(Result('searching', 'worst case', benchmark(linked_list_dict.search, num_trials, 'eregjergjerigjio')))
+    results.append(Result('searching', 'worst case', benchmark(linked_list_dict.search, num_trials, 'badWord')))
     results.append(Result('deleting', 'best case', benchmark(linked_list_dict.delete_word, num_trials, lld_first)))
-    results.append(Result('deleting', 'worst case', benchmark(linked_list_dict.delete_word, num_trials, 'eregjergjerigjio')))
+    results.append(Result('deleting', 'worst case', benchmark(linked_list_dict.delete_word, num_trials, 'badWord')))
     results.append(Result('autocompleting', 'best case', benchmark(linked_list_dict.autocomplete, num_trials, lld_first_auto)))
-    results.append(Result('autocompleting', 'worst case', benchmark(linked_list_dict.autocomplete, num_trials, 'eregjergjerigjio')))
+    results.append(Result('autocompleting', 'worst case', benchmark(linked_list_dict.autocomplete, num_trials, 'badWord')))
 
     for result in results:
         print(f"Average time taken over {num_trials} trials for {result.action} {result.scenario} = {result.time:.5f} sec")
