@@ -1,14 +1,14 @@
 import random
 
 # Read the list of common English words from the "word_list.txt" file
-with open('word_list.txt', 'r') as file:
+with open('100k-word_list.txt', 'r') as file:
     common_words = [line.strip() for line in file]
 
 # Shuffle the list of common words to ensure randomness
 random.shuffle(common_words)
 
 # Generate a number of lines
-num_lines = 20000
+num_lines = 100000
 
 # Create and open the output file
 with open('generated-txt.txt', 'w') as file:
