@@ -33,9 +33,9 @@ def run_benchmarks_for_file(filename):
     results.append(Result('building', 'dictionary', benchmark(create_triedict_from_txt, num_trials, filename)))
     
     results.append(Result('searching', 'best case', benchmark(trie_dict.search, num_trials, 'a')))
-    results.append(Result('searching', 'worst case', benchmark(trie_dict.search, num_trials, 'badWord'))) # FIX THIS, DEEPEST WORD
+    results.append(Result('searching', 'worst case', benchmark(trie_dict.search, num_trials, 'pneumonoultramicroscopicsilicovolcanoconiosis'))) 
     results.append(Result('deleting', 'best case', benchmark(trie_dict.delete_word, num_trials, 'a')))
-    results.append(Result('deleting', 'worst case', benchmark(trie_dict.delete_word, num_trials, 'badWord'))) # FIX THIS, DEEPEST WORD
+    results.append(Result('deleting', 'worst case', benchmark(trie_dict.delete_word, num_trials, 'pneumonoultramicroscopicsilicovolcanoconiosis')))
     results.append(Result('autocompleting', 'best case', benchmark(trie_dict.autocomplete, num_trials, 'alahkazam')))
     results.append(Result('autocompleting', 'worst case', benchmark(trie_dict.autocomplete, num_trials, 'a')))
 
