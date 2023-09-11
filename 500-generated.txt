@@ -492,7 +492,7 @@ chess  377610
 writings  754544
 warm  389903
 acclaimed  160242
-clauses  769350
+a 123
 creed  142161
 sbjct  380379
 intriguing  819796

@@ -26,6 +26,9 @@ def benchmark(func, num_trials, *args):
 def run_benchmarks_for_file(filename):
     num_trials = 10
     Result = namedtuple('Result', ['action', 'scenario', 'time'])
+    small_word = WordFrequency("a", 123)
+    big_word = WordFrequency("pneumonoultramicroscopicsilicovolcanoconiosis", 6328739)
+    bigger_word = WordFrequency("Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch", 759834)
 
     trie_dict = create_triedict_from_txt(filename)
     results = []
@@ -33,11 +36,11 @@ def run_benchmarks_for_file(filename):
     results.append(Result('building', 'dictionary', benchmark(create_triedict_from_txt, num_trials, filename)))
     
     results.append(Result('searching', 'best case', benchmark(trie_dict.search, num_trials, 'a')))
-    results.append(Result('searching', 'worst case', benchmark(trie_dict.search, num_trials, 'pneumonoultramicroscopicsilicovolcanoconiosis'))) 
-    results.append(Result('adding', 'best case', benchmark(trie_dict.add_word_frequency, num_trials, 'a')))
-    results.append(Result('adding', 'worst case', benchmark(trie_dict.add_word_frequency, num_trials, 'Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch')))
+    results.append(Result('searching', 'worst case', benchmark(trie_dict.search, num_trials, big_word.word))) 
+    results.append(Result('adding', 'best case', benchmark(trie_dict.add_word_frequency, num_trials, small_word)))
+    results.append(Result('adding', 'worst case', benchmark(trie_dict.add_word_frequency, num_trials, bigger_word)))
     results.append(Result('deleting', 'best case', benchmark(trie_dict.delete_word, num_trials, 'a')))
-    results.append(Result('deleting', 'worst case', benchmark(trie_dict.delete_word, num_trials, 'pneumonoultramicroscopicsilicovolcanoconiosis')))
+    results.append(Result('deleting', 'worst case', benchmark(trie_dict.delete_word, num_trials, big_word.word)))
     results.append(Result('autocompleting', 'best case', benchmark(trie_dict.autocomplete, num_trials, 'alahkazam')))
     results.append(Result('autocompleting', 'worst case', benchmark(trie_dict.autocomplete, num_trials, 'a')))
 
@@ -47,6 +50,6 @@ def run_benchmarks_for_file(filename):
     print("\n")
 
 if __name__ == "__main__":
-    filenames = ["sampleData.txt"]  # Adjust the list of filenames as needed
+    filenames = ["500-generated.txt", "2k-generated.txt", "5k-generated.txt", "10k-generated.txt", "20k-generated.txt", "sampleData200k.txt", ]  # Adjust the list of filenames as needed
     for filename in filenames:
         run_benchmarks_for_file(filename)

@@ -9989,7 +9989,7 @@ mechanic  141424
 pepper  575463
 violation  733637
 radios  452541
-resort  508020
+a 123
 alley  395064
 commonwealth  456812
 mistress  609886

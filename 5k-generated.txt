@@ -4991,7 +4991,7 @@ outerwear  56648
 depicted  289988
 favored  691065
 ellen  2124
-diets  71194
+a 123
 norwegian  727836
 acquires  120336
 memoir  94229
